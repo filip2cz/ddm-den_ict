@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smazání dat</title>
+</head>
+<body>
+    <script>
+        // Vymazání všech cookies
+        document.cookie.split(";").forEach(function(c) {
+            document.cookie = c
+                .replace(/^ +/, "")
+                .replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
+        });
+
+        // Vymazání místního úložiště
+        localStorage.clear();
+
+        // Vymazání session storage
+        sessionStorage.clear();
+
+        // Přesměrování na index.html
+        window.location.href = "index.html";
+    </script>
+</body>
+</html>
