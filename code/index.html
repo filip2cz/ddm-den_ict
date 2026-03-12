@@ -14,15 +14,228 @@
     crossorigin="anonymous"></script>
 <link rel="stylesheet" type="text/css" href="../main.css">
 
+<!-- highlight.js -->
+<link rel="stylesheet" href="/css/highlight/styles/xt256.css">
+<script src="/css/highlight/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+
 <body>
 
     <!-- Support pro mobilní menu -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <div class="container, center">
+    <div class="container-fluid vh-100">
+        <div class="row h-100">
 
-        <h1 class="display-4"><b>Úvod do C#</b></h1>
+            <div class="col-md-6 overflow-auto h-100 p-5">
+                <div class="text-center">
+                    <h1 class="display-4"><b>Úvod do C#</b></h1>
+                </div>
 
+                <h2>Skladba kódu</h2>
+
+                <p>
+                    Jak si můžete všimnout, na pravé straně stránky je pole pro psaní kódu. V tomto poli jsou kromě
+                    našeho
+                    kódu jisté "výplňové" prvky, které počítači říkají, jak s tímto kódem zacházet. Tyto prvky zde musí
+                    zůstat.
+                </p>
+                <pre><code class="language-csharp">using System;
+					
+using System;
+					
+public class Program
+{
+	public static void Main()
+	{
+	    // Sem se píše kód
+	}
+}</code></pre>
+
+
+
+                <h2>Výpis textu do konzole</h2>
+
+                <p>
+                    Základní způsob interakce s uživatelem je výpis textu. V C# vypisujeme do konzole pomocí příkazu
+                    <code>Console.WriteLine();</code>. Do závorky v tomto příkazu vložíme text, který chceme vypsat.
+                    Pokud vypisujeme přímo text, musíme ho dát do uvozovek.
+                </p>
+
+                <p>
+                    Princip C# a jeho příkazů je následující: S čím chceme pracovat? S konzolí -> <code>Console</code>.
+                    Co s ní chceme dělat? Vypsat řádek -> <code>WriteLine</code>. Co do ni chceme vypsat? "Ahoj světe"
+                    -> <code>Console.WriteLine("Ahoj světe");</code>
+                </p>
+
+
+                <pre><code class="language-csharp">using System;
+					
+public class Program
+{
+	public static void Main()
+	{
+            // Sem se píše kód
+            Console.WriteLine("Ahoj světe");
+	}
+}</code></pre>
+
+                <h3>Matematika</h3>
+
+                <p>
+                    Počítač, už podle názvu, počítá. Funguje to i v našem případě. Do <code>Console.WriteLine</code>
+                    můžeme místo textu napsat příklad. Ten se píše bez uvozovek. Kdybychom ho psali s uvozovkami,
+                    počítač by se k němu choval jako k textu. A zase obráceně, kdybychom text dali bez uvozovek, tak by
+                    se ho počítač snažil počítat, což s textem běžně nejde.
+                </p>
+
+                <pre><code class="language-csharp">using System;
+					
+public class Program
+{
+	public static void Main()
+	{
+            // Sem se píše kód
+            Console.WriteLine(3+7);
+	}
+}</code></pre>
+
+                <h2>Proměnné</h2>
+
+                <p>
+                    Abychom mohli s texty a s čísli lépe pracovat, existují tzv. proměnné. Proměnné mají více typů a
+                    můžeme
+                    do nich ukládat např. text nebo číslo. Text se ukládá do proměnné typu <code>string</code>, číslo se
+                    ukládá do proměnné typu <code>double</code>. Na tyto proměnné se pak můžeme odkazovat v jiných
+                    funkcích,
+                    např. v <code>Console.WriteLine</code>.
+                    Každá proměnná musí mít svoje jméno, pomocí kterého se na ni můžeme odkazovat.
+                </p>
+
+                <pre><code class="language-csharp">using System;
+					
+public class Program
+{
+	public static void Main()
+	{
+            // Sem se píše kód
+            double cislo1 = 8;
+            double cislo2 = 4;
+
+            string textik = "Toto je text";
+
+            Console.WriteLine(textik);
+            Console.WriteLine(cislo1 + cislo2);
+
+            double cislo3 = cislo1 + cislo2;
+
+            Console.WriteLine(textik);
+            Console.WriteLine(cislo3);
+	}
+}</code></pre>
+
+                <h2>Podmínky</h2>
+
+                <p>
+                    Občas chceme spustit nějakou část programu pouze za nějakých podmínek. Pro toto můžeme použít
+                    <code>if</code>, <code>else</code>, případně jejich kombinaci. Do kulatých závorek píšeme podmínku,
+                    do vlnitých závorek píšeme, co se stane, pokud je podmínka splněna.
+                </p>
+
+                <p>
+                    Zkuste si v následujícím programu nastavit různá čísla jako <code>cislo</code> a zkuste, co se
+                    stane.
+                </p>
+
+                <pre><code class="language-csharp">using System;
+					
+public class Program
+{
+	public static void Main()
+	{
+            // Sem se p&iacute;&scaron;e k&oacute;d
+            double cislo = 8;
+
+            if (cislo == 8) {
+                Console.WriteLine(&quot;Č&iacute;slo je osm&quot;);
+            }
+            else if (cislo &lt; 8) {
+                Console.WriteLine(&quot;Č&iacute;sle je men&scaron;&iacute; než osm&quot;);
+            }
+            else {
+                Console.WriteLine(&quot;Č&iacute;slo je vět&scaron;&iacute; než osm&quot;);
+            }
+	}
+}</code></pre>
+
+                <h2>Vstup od uživatele</h2>
+
+                <p>
+                    Když píšeme nějaký program, tak se nám dost často hodí, aby si mohl nějak povídat s uživatelem.
+                    Znovu k tomu používáme konzoli, akorát tentokrát čteme řádek -> <code>Console.ReadLine()</code>.
+                    Tento kód přečte, co mu uživatel napíše. Je důležité, že i když uživatel napíše číslo, tak se uloží
+                    jako text = <code>string</code>.
+                </p>
+
+                <pre><code class="language-csharp">using System;
+					
+public class Program
+{
+	public static void Main()
+	{
+            string vstup = Console.ReadLine();
+            Console.Write("Napsali jste: ");
+            Console.WriteLine(vstup);
+
+            if (vstup == "ahoj") {
+                Console.WriteLine("Zdravím!");
+            }
+            else {
+                Console.WriteLine("Proč jsi mě nepozdravil? :(");
+            }
+	}
+}</code></pre>
+
+                <p>
+                    Pokud s tím, co nám uživatel pošle, chceme pracovat jako s číslem, musíme si to převést. K tomu nám
+                    pomůže příkaz <code>Convert</code>.
+                </p>
+
+                <pre><code class="language-csharp">using System;
+					
+public class Program
+{
+	public static void Main()
+	{
+            Console.Write(&quot;Zadej č&iacute;slo men&scaron;&iacute; než 30: &quot;);
+            string vstup = Console.ReadLine();
+            double cislo = Convert.ToDouble(vstup);
+
+            if (cislo &gt;= 30) {
+                Console.WriteLine(&quot;Č&iacute;slo nen&iacute; men&scaron;&iacute; než 30&quot;);
+            }
+            else {
+                Console.Write(&quot;Tvoje č&iacute;slo vět&scaron;&iacute; o 5: &quot;);
+                Console.WriteLine(cislo + 5);
+            }
+	}
+}</code></pre>
+
+                <h1>Úkol</h1>
+
+                <p>
+                    Tímto jste se naučili vše potřebné pro vytvoření jednoduché kalkulačky. Zkuste si to. Nebojte se
+                    říct si o pomoc.
+                </p>
+
+            </div>
+
+            <div class="col-md-6 d-flex align-items-center justify-content-center">
+                <iframe width="100%" height="100%" src="https://dotnetfiddle.net/Widget/8TK2wI"
+                    frameborder="0"></iframe>
+            </div>
+
+        </div>
     </div>
 
 </body>
